@@ -1,9 +1,9 @@
-:set shiftwidth=2
 syntax on
 :set autoindent
 :set number relativenumber
 :set colorcolumn=80
 :set tabstop=4
+:set shiftwidth=4
 :set softtabstop=4
 :set shiftwidth=4
 :set textwidth=79
@@ -13,8 +13,11 @@ set encoding=utf-8
 
 " for bundles
 execute pathogen#infect()
-"open nerc tree with ctrl+n
+"open nerd tree with ctrl+n
 map <C-n> :NERDTreeToggle<CR>
+"dont show files:
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
+let NERDTreeRespectWildIgnore=1
 
 "set theme to dracula
 color dracula
@@ -24,8 +27,8 @@ let g:ale_sign_column_always = 1
 "will lint only on save (use NERDTree)
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
-let b:ale_fixers = {'*':['remove_trailing_lines', 'trim_whitespace']}
-let b:ale_fix_on_save = 1
+let g:ale_fixers = {'*':['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fix_on_save = 1
 nmap <F8> <Plug>(ale_fix)
 
 "the split settings
@@ -38,7 +41,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Enable folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
