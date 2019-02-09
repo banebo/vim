@@ -29,13 +29,16 @@ rm -rf $HOME/vim-pathogen
 echo "    [+] Done"
 
 # flake8 install
-type pacman > /dev/null
-if [[ $? -eq 0 ]]; then
-    sudo pacman -S flake8
-else
-    sudo apt-get install flake8
+type flake8 > /dev/null
+if [[ $? -ne 0 ]]; then
+    type pacman > /dev/null
+    if [[ $? -eq 0 ]]; then
+        sudo pacman -S flake8
+    else
+        sudo apt-get install flake8
+    fi
+    echo "[+] Flake8 installed!"
 fi
-echo "[+] Flake8 installed!"
 
 echo
 echo "[*] Setting up .vimrc ..."
