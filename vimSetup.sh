@@ -19,14 +19,16 @@ if [[ ! -d $HOME/.vim/bundle/ ]]; then
 fi
 
 echo
-echo "[*] Running apt-get install vim-pathogen ... "
-sudo apt-get install vim-pathogen -y
+echo "[*] Installing vim-pathogen ... "
+git clone https://github.com/tpope/vim-pathogen $HOME/vim-pathogen
+if [[ ! -d $HOME/.vim/autoload ]]; then
+mkdir $HOME/.vim/autoload
+fi
+cp -r $HOME/vim-pathogen/autoload/* $HOME/.vim/autoload/
+rm -rf $HOME/vim-pathogen
 echo "    [+] Done"
 
-echo
-echo "[*] Running apt-get install flake8 ..."
-sudo apt-get install flake8 -y
-echo "    [+] Done"
+# flake8 install
 
 echo
 echo "[*] Setting up .vimrc ..."
@@ -40,7 +42,7 @@ echo "    [+] Done"
 echo
 echo "[*] Setting up vim bundles..."
 echo
-git clone https://github.com/w0rp/ale.git $HOME.vim/bundle/ale
+git clone https://github.com/w0rp/ale.git $HOME/.vim/bundle/ale
 echo "    [+] Ale from https://github.com/w0rp/ale.git installed"
 
 echo
