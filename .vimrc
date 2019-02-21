@@ -9,7 +9,8 @@ syntax on
 :set textwidth=79
 :set expandtab
 :set fileformat=unix
-set encoding=utf-8
+:set encoding=utf-8
+:set shiftround
 
 " for bundles
 execute pathogen#infect()
