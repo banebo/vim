@@ -9,15 +9,16 @@ if [[ $choice != "y" ]]; then
 fi
 
 if [[ ! -d $HOME/.vim ]]; then
-    echo "[*] Creating ~/.vim ... Reason: dir does not exist"
+    echo "[*] Created ~/.vim"
     mkdir ~/.vim
 fi
 
 if [[ ! -d $HOME/.vim/bundle/ ]]; then
-    echo "[*] Creating ~/.vim/bundle ... Reason: dir does not exist"
+    echo "[*] Created ~/.vim/bundle"
     mkdir ~/.vim/bundle
 fi
 
+# vim-pathoden
 echo
 echo "[*] Installing vim-pathogen ... "
 git clone -q https://github.com/tpope/vim-pathogen $HOME/vim-pathogen
@@ -29,54 +30,36 @@ rm -rf $HOME/vim-pathogen
 echo "    [+] Done"
 
 # flake8 install
-type flake8 > /dev/null
-if [[ $? -ne 0 ]]; then
-    type pacman > /dev/null
-    if [[ $? -eq 0 ]]; then
-        sudo pacman -S flake8
-    else
-        sudo apt-get install flake8
-    fi
-    echo "[+] Flake8 installed!"
-fi
+sudo pacman -S flake8
+echo "[+] Flake8 installed!"
 
-echo
-echo "[*] Setting up .vimrc ..."
+# vimrc
+printf "\n[*] Setting up .vimrc ..."
 cp $HOME/vim/.vimrc $HOME/.vimrc
 echo "    [+] Done"
 
-echo
-echo "[*] Setting up vim bundles..."
-echo
+printf "\n[*] Setting up vim bundles..."
 git clone -q https://github.com/w0rp/ale.git $HOME/.vim/bundle/ale
-echo "    [+] Installed: Ale from https://github.com/w0rp/ale.git"
+printf "\n\t[+] Installed: Ale from https://github.com/w0rp/ale.git\n"
 
-echo
 git clone -q https://github.com/dracula/vim.git $HOME/.vim/bundle/dracula
-echo "    [+] Installed: Dracula-theme from https://github.com/dracula/dracula-theme.git"
-echo
+printf "\n\t[+] Installed: Dracula-theme from https://github.com/dracula/dracula-theme.git\n"
 
-echo
 git clone -q https://github.com/itchyny/lightline.vim.git $HOME/.vim/bundle/lightline
-echo "    [+] Installed: Light line from https://github.com/itchyny/lightline.vim.git"
+printf "\n\t[+] Installed: Light line from https://github.com/itchyny/lightline.vim.git\n"
 
-echo
 git clone -q https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
-echo "    [+] Installed: NERDTree from https://github.com/scrooloose/nerdtree.git"
+printf "\n\t[+] Installed: NERDTree from https://github.com/scrooloose/nerdtree.git\n"
 
-echo
 git clone -q https://github.com/tpope/vim-eunuch.git $HOME/.vim/bundle/vim-eunuch
-echo "    [+] Installed: vim-eunuch from https://github.com/tpope/vim-eunuch.git"
+printf "\n\t[+] Installed: vim-eunuch from https://github.com/tpope/vim-eunuch.git\n"
 
-echo
 git clone -q https://github.com/itchyny/vim-gitbranch.git $HOME/.vim/bundle/vim-gitbranch
-echo "    [+] Installed: vim-gitbranch from https://github.com/itchyny/vim-gitbranch.git"
+printf "\n\t[+] Installed: vim-gitbranch from https://github.com/itchyny/vim-gitbranch.git\n"
 
-echo
 git clone -q https://github.com/airblade/vim-gitgutter.git $HOME/.vim/bundle/vim-gitgutter
-echo "    [+] Installed: vim-gitgutter from https://github.com/airblade/vim-gitgutter.git"
+printf "\n\t[+] Installed: vim-gitgutter from https://github.com/airblade/vim-gitgutter.git\n"
 
-echo;echo
-echo "[+] All done, exiting..."
+printf "\n\n[+] All done.\n\n"
 
 exit 0
