@@ -67,3 +67,6 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+
+let g:NERDTreeDirArrowExpandable="[+]"
+let g:NERDTreeDirArrowCollapsible="[-]"
